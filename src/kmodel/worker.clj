@@ -34,10 +34,10 @@
 (defn stream->db
   "Single threaded, single topic consumer.
    This consumer obviously has a lot of shortcomings."
-  [{:keys [redis kafka]}]
+  [{:keys [redis consumer]}]
   (let [topic     "job"
         topic-map {topic (int 1)}
-        cfg       (consumer-config kafka)
+        cfg       (consumer-config consumer)
         consumer  (Consumer/createJavaConsumerConnector cfg)
         streams   (.createMessageStreams consumer topic-map)
         stream    (first (get streams topic))

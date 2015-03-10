@@ -23,7 +23,7 @@
   [topic key data]
   (ProducerRecord. topic key (when data (pr-str data))))
 
-(defn  producer
+(defn kafka-producer
   "Get a kafka producer from a configuration map."
   [opts]
   (let [props (Properties.)]
@@ -34,8 +34,8 @@
 (defn redis-kafka-db
   "Our implementation of JobDB which does reads in Redis and writes
    in Kafka."
-  [{:keys [redis kafka]}]
-  (let [producer (producer kafka)]
+  [{:keys [redis producer]}]
+  (let [producer (kafka-producer producer)]
     (reify
       JobDB
       (all [this]

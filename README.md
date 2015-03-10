@@ -50,6 +50,25 @@ available locally, adapt as needed.
               :group.id          "job-db"}}
 ```
 
+## Prerequisites
+
+You will of course need both zookeeper and kafka running, as well as
+a reachable redis instance.
+
+You will need to create the kafka topic and indicate in its configuration that
+log compaction is enabled:
+
+```
+./bin/kafka-topics.sh --create --topic=job --zookeeper=localhost:2181 --partitions=10 --replication-factor=1 --config=cleanup.policy=compact
+```
+
+You will also need the following set in your kafka broker properties:
+
+```
+log.cleaner.enable=true
+```
+
+
 ## Code organization
 
 The code is split across the following namespaces:

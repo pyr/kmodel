@@ -1,0 +1,37 @@
+<div class="panel panel-default">
+  
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-sm-2">
+        <h4>Job listing</h4>
+      </div>
+      <div class="col-sm-4 col-sm-offset-6">
+        <form class="form-inline">
+          <input type="search" ng-model="searchterm" class="form-control">
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <th>Company</th>
+        <th colspan="2">Job title</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="job in job_list() | filter:searchterm">
+          <td>{{job.company}}</td>
+          <td><a href="#details/{{job.id}}">{{job.title}}</a></td>
+          <td>
+            <button type="button"
+                    class="btn btn-xs btn-danger pull-right"
+                    ng-click="delete_job(job.id)">
+              delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

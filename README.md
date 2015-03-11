@@ -1,6 +1,8 @@
 kmodel: Proof of Concept Kafka materialized view
 ================================================
 
+Accompanying blog post: http://spootnik.org/entries/2015/03/10_simple-materialized-views-in-kafka-and-clojure.html
+
 This demo project showcases the use of [Apache Kafka](http://kafka.apache.org)
 to create materialized views from a stream of events. This sample projects assumes you have
 read the following articles:
